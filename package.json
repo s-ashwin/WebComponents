@@ -1,0 +1,20 @@
+{
+  "name": "web-components",
+  "version": "1.0.0",
+  "description": "HandsOn - WebComponents",
+  "main": "index.js",
+  "scripts": {
+    "init": "cd stencil-component && npm i && npm run build && npm link && cd ../component-library-react && npm i && npm link component-library && npm run build && npm link && cd ../react-app && npm i && npm link component-library-react",
+    "start": "cd react-app && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-ashwin/WebComponents.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s-ashwin/WebComponents/issues"
+  },
+  "homepage": "https://github.com/s-ashwin/WebComponents#readme"
+}
