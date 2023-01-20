@@ -4,7 +4,7 @@
   "description": "HandsOn - WebComponents",
   "main": "index.js",
   "scripts": {
-    "init": "cd stencil-component && npm i && npm run build && npm link && cd ../component-library-react && npm i && npm link component-library && npm run build && npm link && cd ../react-app && npm i && npm link component-library-react",
+    "init": "cd component-library && npm i && npm run build && npm link && cd ../component-library-react && npm i && npm link component-library && npm run build && npm link && cd ../react-app && npm i && npm link component-library-react",
     "start": "cd react-app && npm start"
   },
   "repository": {
