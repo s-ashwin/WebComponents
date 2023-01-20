@@ -23,6 +23,13 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SearchComponent {
+        "value": string;
+    }
+}
+export interface SearchComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSearchComponentElement;
 }
 declare global {
     interface HTMLCounterComponentElement extends Components.CounterComponent, HTMLStencilElement {
@@ -37,9 +44,16 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSearchComponentElement extends Components.SearchComponent, HTMLStencilElement {
+    }
+    var HTMLSearchComponentElement: {
+        prototype: HTMLSearchComponentElement;
+        new (): HTMLSearchComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "counter-component": HTMLCounterComponentElement;
         "my-component": HTMLMyComponentElement;
+        "search-component": HTMLSearchComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -60,9 +74,14 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SearchComponent {
+        "onChangeInput"?: (event: SearchComponentCustomEvent<string>) => void;
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "counter-component": CounterComponent;
         "my-component": MyComponent;
+        "search-component": SearchComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -71,6 +90,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "counter-component": LocalJSX.CounterComponent & JSXBase.HTMLAttributes<HTMLCounterComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "search-component": LocalJSX.SearchComponent & JSXBase.HTMLAttributes<HTMLSearchComponentElement>;
         }
     }
 }
