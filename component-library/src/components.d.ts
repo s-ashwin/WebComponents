@@ -6,8 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface CounterComponent {
-        "name": string;
+    interface LikeComponent {
+        "label": string;
     }
     interface MyComponent {
         /**
@@ -32,11 +32,11 @@ export interface SearchComponentCustomEvent<T> extends CustomEvent<T> {
     target: HTMLSearchComponentElement;
 }
 declare global {
-    interface HTMLCounterComponentElement extends Components.CounterComponent, HTMLStencilElement {
+    interface HTMLLikeComponentElement extends Components.LikeComponent, HTMLStencilElement {
     }
-    var HTMLCounterComponentElement: {
-        prototype: HTMLCounterComponentElement;
-        new (): HTMLCounterComponentElement;
+    var HTMLLikeComponentElement: {
+        prototype: HTMLLikeComponentElement;
+        new (): HTMLLikeComponentElement;
     };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
@@ -51,14 +51,14 @@ declare global {
         new (): HTMLSearchComponentElement;
     };
     interface HTMLElementTagNameMap {
-        "counter-component": HTMLCounterComponentElement;
+        "like-component": HTMLLikeComponentElement;
         "my-component": HTMLMyComponentElement;
         "search-component": HTMLSearchComponentElement;
     }
 }
 declare namespace LocalJSX {
-    interface CounterComponent {
-        "name"?: string;
+    interface LikeComponent {
+        "label"?: string;
     }
     interface MyComponent {
         /**
@@ -79,7 +79,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
-        "counter-component": CounterComponent;
+        "like-component": LikeComponent;
         "my-component": MyComponent;
         "search-component": SearchComponent;
     }
@@ -88,7 +88,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "counter-component": LocalJSX.CounterComponent & JSXBase.HTMLAttributes<HTMLCounterComponentElement>;
+            "like-component": LocalJSX.LikeComponent & JSXBase.HTMLAttributes<HTMLLikeComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "search-component": LocalJSX.SearchComponent & JSXBase.HTMLAttributes<HTMLSearchComponentElement>;
         }
