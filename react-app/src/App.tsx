@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { LikeComponent, SearchComponent } from "component-library-react";
+import { LikeComponent, SearchComponent, TodoApp } from "component-library-react";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         <p>Web Components</p>
         <SearchComponent onChangeInput={(e) => console.log(e.target.value)} />
         <LikeComponent  />
+        <TodoApp/>
       </header>
     </div>
   );

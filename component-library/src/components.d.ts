@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { TodoItem } from "./models/todoItem";
 export namespace Components {
     interface LikeComponent {
         "label": string;
@@ -26,10 +27,22 @@ export namespace Components {
     interface SearchComponent {
         "value": string;
     }
+    interface TodoApp {
+    }
+    interface TodoList {
+        "todoItems": TodoItem[];
+    }
+    interface TodoListForm {
+        "todoItemsLength": number;
+    }
 }
 export interface SearchComponentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSearchComponentElement;
+}
+export interface TodoListFormCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTodoListFormElement;
 }
 declare global {
     interface HTMLLikeComponentElement extends Components.LikeComponent, HTMLStencilElement {
@@ -50,10 +63,31 @@ declare global {
         prototype: HTMLSearchComponentElement;
         new (): HTMLSearchComponentElement;
     };
+    interface HTMLTodoAppElement extends Components.TodoApp, HTMLStencilElement {
+    }
+    var HTMLTodoAppElement: {
+        prototype: HTMLTodoAppElement;
+        new (): HTMLTodoAppElement;
+    };
+    interface HTMLTodoListElement extends Components.TodoList, HTMLStencilElement {
+    }
+    var HTMLTodoListElement: {
+        prototype: HTMLTodoListElement;
+        new (): HTMLTodoListElement;
+    };
+    interface HTMLTodoListFormElement extends Components.TodoListForm, HTMLStencilElement {
+    }
+    var HTMLTodoListFormElement: {
+        prototype: HTMLTodoListFormElement;
+        new (): HTMLTodoListFormElement;
+    };
     interface HTMLElementTagNameMap {
         "like-component": HTMLLikeComponentElement;
         "my-component": HTMLMyComponentElement;
         "search-component": HTMLSearchComponentElement;
+        "todo-app": HTMLTodoAppElement;
+        "todo-list": HTMLTodoListElement;
+        "todo-list-form": HTMLTodoListFormElement;
     }
 }
 declare namespace LocalJSX {
@@ -78,10 +112,23 @@ declare namespace LocalJSX {
         "onChangeInput"?: (event: SearchComponentCustomEvent<string>) => void;
         "value"?: string;
     }
+    interface TodoApp {
+    }
+    interface TodoList {
+        "todoItems"?: TodoItem[];
+    }
+    interface TodoListForm {
+        "onInputChange"?: (event: TodoListFormCustomEvent<any>) => void;
+        "onSubmit"?: (event: TodoListFormCustomEvent<any>) => void;
+        "todoItemsLength"?: number;
+    }
     interface IntrinsicElements {
         "like-component": LikeComponent;
         "my-component": MyComponent;
         "search-component": SearchComponent;
+        "todo-app": TodoApp;
+        "todo-list": TodoList;
+        "todo-list-form": TodoListForm;
     }
 }
 export { LocalJSX as JSX };
@@ -91,6 +138,9 @@ declare module "@stencil/core" {
             "like-component": LocalJSX.LikeComponent & JSXBase.HTMLAttributes<HTMLLikeComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "search-component": LocalJSX.SearchComponent & JSXBase.HTMLAttributes<HTMLSearchComponentElement>;
+            "todo-app": LocalJSX.TodoApp & JSXBase.HTMLAttributes<HTMLTodoAppElement>;
+            "todo-list": LocalJSX.TodoList & JSXBase.HTMLAttributes<HTMLTodoListElement>;
+            "todo-list-form": LocalJSX.TodoListForm & JSXBase.HTMLAttributes<HTMLTodoListFormElement>;
         }
     }
 }
